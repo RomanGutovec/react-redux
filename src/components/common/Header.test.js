@@ -1,0 +1,21 @@
+import React from "react";
+import Header from "./Header";
+import { mount, shallow } from "enzyme";
+import { MemoryRouter } from "react-router-dom";
+import { exportAllDeclaration } from "@babel/types";
+
+it("contains 3 navlinks via shallow", () => {
+  const numLinks = shallow(<Header />).find("NavLink").length;
+
+  expect(numLinks).toEqual(3);
+});
+
+it("contains 3 anchors via mount", () => {
+  const numAnchors = mount(
+    <MemoryRouter>
+      <Header />
+    </MemoryRouter>
+  ).find("a").length;
+
+  expect(numAnchors).toEqual(3);
+});
